@@ -23,7 +23,15 @@
 #include "ns3/uinteger.h"
 #include "ns3/packet.h"
 #include "ns3/simulator.h"
+#include "utils/ndn-ns3-packet-tag.hpp"
+#include "utils/ndn-rtt-mean-deviation.hpp"
+
 #include <ndn-cxx/lp/tags.hpp>
+
+#include <boost/lexical_cast.hpp>
+#include <boost/ref.hpp>
+
+#include "ns3/ptr.h"
 
 #include "model/ndn-l3-protocol.hpp"
 #include "helper/ndn-fib-helper.hpp"
@@ -112,9 +120,9 @@ Producer::OnInterest(shared_ptr<const Interest> interest)
   data->setContent(make_shared< ::ndn::Buffer>(m_virtualPayloadSize));
 
   //CHANGED
-  auto maxHopCount = interest->getTag<::ndn::lp::HopCountTag>();
+  auto maxHopCount = interest->getTag<lp::HopCountTag>();
   if(maxHopCount != nullptr)
-    data->setTag(make_shared<::ndn::lp::HopCountTag>(maxHopCount.get()));
+    data->setTag(make_shared<lp::HopCountTag>(*maxHopCount));
   //CHANGED
 
   Signature signature;
