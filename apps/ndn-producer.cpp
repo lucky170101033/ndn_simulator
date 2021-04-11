@@ -120,9 +120,9 @@ Producer::OnInterest(shared_ptr<const Interest> interest)
   data->setContent(make_shared< ::ndn::Buffer>(m_virtualPayloadSize));
 
   //CHANGED
-  auto maxHopCount = interest->getTag<lp::HopCountTag>();
+  auto maxHopCount = interest->getTag<lp::MaxHopCountTag>();
   if(maxHopCount != nullptr)
-    data->setTag(make_shared<lp::HopCountTag>(*maxHopCount));
+    data->setTag(make_shared<lp::MaxHopCountTag>(*maxHopCount));
   //CHANGED
 
   Signature signature;
