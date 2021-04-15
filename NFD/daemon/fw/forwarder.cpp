@@ -316,9 +316,9 @@ Forwarder::onIncomingData(const FaceEndpoint& ingress, const Data& data)
 
   // CS insert
   //  cache admission decision
-  auto hopCount = data.getTag<lp::HopCountTag>();
-  auto maxHopCount = data.getTag<lp::MaxHopCountTag>();
-  if(hopCount != nullptr && (*hopCount == 1 || (maxHopCount != nullptr && *hopCount == (*maxHopCount) - 1 )))
+  // auto hopCount = data.getTag<lp::HopCountTag>();
+  // auto maxHopCount = data.getTag<lp::MaxHopCountTag>();
+  // if(hopCount != nullptr && (*hopCount == 1 || (maxHopCount != nullptr && *hopCount == (*maxHopCount) - 1 )))
     { m_cs.insert(data); }
     
   // when only one PIT entry is matched, trigger strategy: after receive Data

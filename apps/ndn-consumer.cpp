@@ -193,7 +193,11 @@ Consumer::SendPacket()
   interest->setCanBePrefix(false);
   time::milliseconds interestLifeTime(m_interestLifeTime.GetMilliSeconds());
   interest->setInterestLifetime(interestLifeTime);
-
+  
+  //CHANGED
+  interest->setTag(make_shared<lp::MaxHopCountTag>(0));
+  //CHANGED
+  
   // NS_LOG_INFO ("Requesting Interest: \n" << *interest);
   NS_LOG_INFO("> Interest for " << seq);
 
