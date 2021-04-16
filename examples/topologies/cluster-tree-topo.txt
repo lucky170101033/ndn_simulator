@@ -1,0 +1,184 @@
+router
+#node                   comment     yPos        xPos
+Node1                   NA          0           -1
+Node10                  NA          0           -2
+Node100                 NA          0.5         -3
+Node101                 NA         -0.5         -3
+Node1000                NA          0.9         -4
+Node1001                NA          0.1         -4
+Node1010                NA         -0.1         -4
+Node1011                NA         -0.9         -4
+Node10000               NA          0.9         -5
+Node10001               NA          0.6         -5
+Node10001_              NA          1.2         -5
+Node10010               NA          0.1         -5
+Node10011               NA          0.4         -5
+Node10011_              NA          0.05        -5
+Node10100               NA         -0.1         -5
+Node10101               NA         -0.05        -5
+Node10101_              NA         -0.4         -5
+Node10110               NA         -0.9         -5
+Node10111               NA         -1.2         -5
+Node10111_              NA         -0.6         -5
+Node3                   NA          0            1
+Node30                  NA          0            2
+Node300                 NA          0.5          3
+Node301                 NA         -0.5          3
+Node3000                NA          0.9          4
+Node3001                NA          0.1          4
+Node3010                NA         -0.1          4
+Node3011                NA         -0.9          4
+Node30000               NA          0.9          5
+Node30001               NA          0.6          5
+Node30001_              NA          1.2          5
+Node30010               NA          0.1          5
+Node30011               NA          0.4          5
+Node30011_              NA          0.05         5
+Node30100               NA         -0.1          5
+Node30101               NA         -0.05         5
+Node30101_              NA         -0.4          5
+Node30110               NA         -0.9          5
+Node30111               NA         -1.2          5
+Node30111_              NA         -0.6          5
+Node2                   NA          1            0
+Node20                  NA          2            0
+Node200                 NA          3            0.5
+Node201                 NA          3           -0.5
+Node2000                NA          4            0.9
+Node2001                NA          4            0.1
+Node2010                NA          4           -0.1
+Node2011                NA          4           -0.9
+Node20000               NA          5            0.9
+Node20001               NA          5            0.6
+Node20001_              NA          5            1.2
+Node20010               NA          5            0.1
+Node20011               NA          5            0.4
+Node20011_              NA          5            0.05
+Node20100               NA          5           -0.1
+Node20101               NA          5           -0.05
+Node20101_              NA          5           -0.4
+Node20110               NA          5           -0.9
+Node20111               NA          5           -1.2
+Node20111_              NA          5           -0.6
+Node4                   NA         -1            0
+Node40                  NA         -2            0
+Node400                 NA         -3            0.5
+Node401                 NA         -3           -0.5
+Node4000                NA         -4            0.9
+Node4001                NA         -4            0.1
+Node4010                NA         -4           -0.1
+Node4011                NA         -4           -0.9
+Node40000               NA         -5            0.9
+Node40001               NA         -5            0.6
+Node40001_              NA         -5            1.2
+Node40010               NA         -5            0.1
+Node40011               NA         -5            0.4
+Node40011_              NA         -5            0.05
+Node40100               NA         -5           -0.1
+Node40101               NA         -5           -0.05
+Node40101_              NA         -5           -0.4
+Node40110               NA         -5           -0.9
+Node40111               NA         -5           -1.2
+Node40111_              NA         -5           -0.6
+Producer1               NA          0            0
+
+
+link
+# srcNode           dstNode             bandwidth   metric  delay   queue
+Node10000           Node1000            10Mbps      1       10ms    20
+Node10001           Node1000            10Mbps      1       10ms    20
+Node10001_          Node1000            10Mbps      1       10ms    20
+Node10010           Node1001            10Mbps      1       10ms    20
+Node10011           Node1001            10Mbps      1       10ms    20
+Node10011_          Node1001            10Mbps      1       10ms    20
+Node10100           Node1010            10Mbps      1       10ms    20
+Node10101           Node1010            10Mbps      1       10ms    20
+Node10101_          Node1010            10Mbps      1       10ms    20
+Node10110           Node1011            10Mbps      1       10ms    20
+Node10111           Node1011            10Mbps      1       10ms    20
+Node10111_          Node1011            10Mbps      1       10ms    20
+#consumer to edge nodes fininshed for part starting with Node1
+Node1000            Node100             10Mbps      1       10ms    20
+Node1001            Node100             10Mbps      1       10ms    20
+Node1010            Node101             10Mbps      1       10ms    20
+Node1011            Node101             10Mbps      1       10ms    20
+#edge to parents fininshed for part starting with Node1
+Node100             Node10              10Mbps      1       10ms    20
+Node101             Node10              10Mbps      1       10ms    20
+Node10              Node1               20Mbps      1       10ms    40
+#Node1 completed
+
+Node20000           Node2000            10Mbps      1       10ms    20
+Node20001           Node2000            10Mbps      1       10ms    20
+Node20001_          Node2000            10Mbps      1       10ms    20
+Node20010           Node2001            10Mbps      1       10ms    20
+Node20011           Node2001            10Mbps      1       10ms    20
+Node20011_          Node2001            10Mbps      1       10ms    20
+Node20100           Node2010            10Mbps      1       10ms    20
+Node20101           Node2010            10Mbps      1       10ms    20
+Node20101_          Node2010            10Mbps      1       10ms    20
+Node20110           Node2011            10Mbps      1       10ms    20
+Node20111           Node2011            10Mbps      1       10ms    20
+Node20111_          Node2011            10Mbps      1       10ms    20
+#consumer to edge nodes fininshed for part starting with Node2
+Node2000            Node200             10Mbps      1       10ms    20
+Node2001            Node200             10Mbps      1       10ms    20
+Node2010            Node201             10Mbps      1       10ms    20
+Node2011            Node201             10Mbps      1       10ms    20
+#edge to parents fininshed for part starting with Node2
+Node200             Node20              10Mbps      1       10ms    20
+Node201             Node20              10Mbps      1       10ms    20
+Node20              Node2               20Mbps      1       10ms    40
+#Node2 completed
+
+Node30000           Node3000            10Mbps      1       10ms    20
+Node30001           Node3000            10Mbps      1       10ms    20
+Node30001_          Node3000            10Mbps      1       10ms    20
+Node30010           Node3001            10Mbps      1       10ms    20
+Node30011           Node3001            10Mbps      1       10ms    20
+Node30011_          Node3001            10Mbps      1       10ms    20
+Node30100           Node3010            10Mbps      1       10ms    20
+Node30101           Node3010            10Mbps      1       10ms    20
+Node30101_          Node3010            10Mbps      1       10ms    20
+Node30110           Node3011            10Mbps      1       10ms    20
+Node30111           Node3011            10Mbps      1       10ms    20
+Node30111_          Node3011            10Mbps      1       10ms    20
+#consumer to edge nodes fininshed for part starting with Node3
+Node3000            Node300             10Mbps      1       10ms    20
+Node3001            Node300             10Mbps      1       10ms    20
+Node3010            Node301             10Mbps      1       10ms    20
+Node3011            Node301             10Mbps      1       10ms    20
+#edge to parents fininshed for part starting with Node3
+Node300             Node30              10Mbps      1       10ms    20
+Node301             Node30              10Mbps      1       10ms    20
+Node30              Node3               20Mbps      1       10ms    40
+#Node3 completed
+
+Node40000           Node4000            10Mbps      1       10ms    20
+Node40001           Node4000            10Mbps      1       10ms    20
+Node40001_          Node4000            10Mbps      1       10ms    20
+Node40010           Node4001            10Mbps      1       10ms    20
+Node40011           Node4001            10Mbps      1       10ms    20
+Node40011_          Node4001            10Mbps      1       10ms    20
+Node40100           Node4010            10Mbps      1       10ms    20
+Node40101           Node4010            10Mbps      1       10ms    20
+Node40101_          Node4010            10Mbps      1       10ms    20
+Node40110           Node4011            10Mbps      1       10ms    20
+Node40111           Node4011            10Mbps      1       10ms    20
+Node40111_          Node4011            10Mbps      1       10ms    20
+#consumer to edge nodes fininshed for part starting with Node4
+Node4000            Node400             10Mbps      1       10ms    20
+Node4001            Node400             10Mbps      1       10ms    20
+Node4010            Node401             10Mbps      1       10ms    20
+Node4011            Node401             10Mbps      1       10ms    20
+#edge to parents fininshed for part starting with Node4
+Node400             Node40              10Mbps      1       10ms    20
+Node401             Node40              10Mbps      1       10ms    20
+Node40              Node4               20Mbps      1       10ms    40
+#Node4 completed
+
+Producer1           Node1               20Mbps      1       8ms     40
+Producer1           Node2               20Mbps      1       8ms     40
+Producer1           Node3               20Mbps      1       8ms     40
+Producer1           Node4               20Mbps      1       8ms     40
+#Producer to one hop down edges

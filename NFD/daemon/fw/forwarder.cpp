@@ -221,6 +221,7 @@ Forwarder::onContentStoreHit(const FaceEndpoint& ingress, const shared_ptr<pit::
 {
   NFD_LOG_DEBUG("onContentStoreHit interest=" << interest.getName());
   ++m_counters.nCsHits;
+  std::cout << m_counters.nCsHits << "\n";
   afterCsHit(interest, data);
 
   data.setTag(make_shared<lp::IncomingFaceIdTag>(face::FACEID_CONTENT_STORE));
@@ -316,9 +317,9 @@ Forwarder::onIncomingData(const FaceEndpoint& ingress, const Data& data)
 
   // CS insert
   //  cache admission decision
-  // auto hopCount = data.getTag<lp::HopCountTag>();
-  // auto maxHopCount = data.getTag<lp::MaxHopCountTag>();
-  // if(hopCount != nullptr && (*hopCount == 1 || (maxHopCount != nullptr && *hopCount == (*maxHopCount) - 1 )))
+  auto hopCount = data.getTag<lp::HopCountTag>();
+  auto maxHopCount = data.getTag<lp::MaxHopCountTag>();
+  if(hopCount != nullptr && (*hopCount == 1|| (maxHopCount != nullptr && *hopCount == (*maxHopCount) - 1 )))
     { m_cs.insert(data); }
     
   // when only one PIT entry is matched, trigger strategy: after receive Data

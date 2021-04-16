@@ -238,7 +238,7 @@ main(int argc, char* argv[])
 
   Simulator::Stop(Seconds(20.0));
 
-  ndn::CsTracer::InstallAll("cs-trace.txt", Seconds(15));
+  ndn::CsTracer::InstallAll("cs-trace.txt", Seconds(1));
 
   Simulator::Run();
   Simulator::Destroy();

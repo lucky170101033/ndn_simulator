@@ -58,6 +58,10 @@ main(int argc, char* argv[])
   CommandLine cmd;
   cmd.Parse(argc, argv);
 
+  // AnnotatedTopologyReader topologyReader("", 25);
+  // topologyReader.SetFileName("src/ndnSIM/examples/topologies/cluster-tree-topo.txt");
+  // topologyReader.Read();
+
   // Creating nodes
   NodeContainer nodes;
   nodes.Create(3);
