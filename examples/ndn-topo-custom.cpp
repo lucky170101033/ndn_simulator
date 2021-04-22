@@ -26,6 +26,14 @@
 
 namespace ns3 {
 
+void PrintInfo(Ptr<Node> node){
+  long long cache_hit,cache_miss;
+  auto l3 = ns3::ndn::L3Protocol::getL3Protocol(node);
+  auto fw =  l3-> getForwarder();
+  std::tie (cache_hit,cache_miss) = fw->getCacheStats();
+  std::cout << ns3::Names::FindName(node) << " " << cache_hit << " "  << cache_miss << '\n';
+}
+
 int
 main(int argc, char* argv[])
 {
@@ -66,8 +74,8 @@ main(int argc, char* argv[])
 
   for (int i = 0; i < 48; i++) {
     ndn::AppHelper consumerHelper("ns3::ndn::ConsumerZipfMandelbrot");
-    consumerHelper.SetAttribute("Frequency", StringValue("10"));        // 10 interests a second
-    consumerHelper.SetAttribute("NumberOfContents", StringValue("5")); // 100 different contents
+    consumerHelper.SetAttribute("Frequency", StringValue("20"));        // 10 interests a second
+    consumerHelper.SetAttribute("NumberOfContents", StringValue("250")); // 100 different contents
 
     // Each consumer will express the same data /root/<seq-no>
     consumerHelper.SetPrefix("/root");
@@ -87,10 +95,15 @@ main(int argc, char* argv[])
   // Calculate and install FIBs
   ndn::GlobalRoutingHelper::CalculateRoutes();
 
+  auto nc = NodeContainer::GetGlobal();
+  for (uint32_t i = 0; i < nc.GetN(); i++) {
+    Simulator::Schedule ( Seconds(20), PrintInfo, nc.Get(i) );
+  }
+
   Simulator::Stop(Seconds(20.0));
 
-  ndn::CsTracer::InstallAll("cs-trace.txt", Seconds(1));
-  ndn::AppDelayTracer::InstallAll("app-delays-trace.txt");
+  //ndn::CsTracer::InstallAll("cs-trace.txt", Seconds(1));
+  ndn::AppDelayTracer::InstallAll("results/app-delays-trace-LCE-20-250.txt");
   Simulator::Run();
   Simulator::Destroy();
 

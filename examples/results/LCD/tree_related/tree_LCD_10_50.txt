@@ -1,0 +1,15 @@
+Waf: Entering directory `/home/harry/My_data/Study/7th_sem/BTP/ndnSIM/ns-3/build'
+[2729/3110] Compiling src/ndnSIM/examples/ndn-topo-custom.cpp
+[2732/3110] Compiling src/ndnSIM/examples/ndn-tree-cs-tracers.cpp
+[3068/3110] Linking build/src/ndnSIM/examples/ns3-dev-ndn-tree-cs-tracers-debug
+[3069/3110] Linking build/src/ndnSIM/examples/ns3-dev-ndn-topo-custom-debug
+Waf: Leaving directory `/home/harry/My_data/Study/7th_sem/BTP/ndnSIM/ns-3/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (8.012s)
+leaf-1 0 208
+leaf-2 0 208
+leaf-3 0 208
+leaf-4 0 208
+rtr-1 349 59
+rtr-2 350 59
+root 0 109

@@ -85,9 +85,17 @@ Forwarder::Forwarder(FaceTable& faceTable)
   });
 
   m_strategyChoice.setDefaultStrategy(getDefaultStrategyName());
+  total_cache_hit = 0, total_cache_miss = 0;
 }
 
 Forwarder::~Forwarder() = default;
+
+std::tuple <long long, long long > Forwarder::getCacheStats(){
+  long long cacheHit, cacheMiss;
+  cacheHit = total_cache_hit;
+  cacheMiss = total_cache_miss;
+  return std::make_tuple(cacheHit,cacheMiss);
+}
 
 void
 Forwarder::onIncomingInterest(const FaceEndpoint& ingress, const Interest& interest)
@@ -180,6 +188,7 @@ Forwarder::onContentStoreMiss(const FaceEndpoint& ingress,
 {
   NFD_LOG_DEBUG("onContentStoreMiss interest=" << interest.getName());
   ++m_counters.nCsMisses;
+  total_cache_miss = m_counters.nCsMisses;
   afterCsMiss(interest);
 
   // insert in-record
@@ -221,7 +230,7 @@ Forwarder::onContentStoreHit(const FaceEndpoint& ingress, const shared_ptr<pit::
 {
   NFD_LOG_DEBUG("onContentStoreHit interest=" << interest.getName());
   ++m_counters.nCsHits;
-  //std::cout << m_counters.nCsHits << "\n";
+  total_cache_hit = m_counters.nCsHits;
   afterCsHit(interest, data);
 
   data.setTag(make_shared<lp::IncomingFaceIdTag>(face::FACEID_CONTENT_STORE));
@@ -229,7 +238,11 @@ Forwarder::onContentStoreHit(const FaceEndpoint& ingress, const shared_ptr<pit::
   //CHANGED
   auto maxHopCount = interest.getTag<lp::MaxHopCountTag>();
   if(maxHopCount != nullptr)
+  {  
     data.setTag(make_shared<lp::MaxHopCountTag>(*maxHopCount));
+    data.setTag(make_shared<lp::HopCountTag>(0));
+    //std::cout << "HopCount=" << *maxHopCount << "\t CS Hit=" << m_counters.nCsHits <<"\n";
+  }
   //CHANGED
 
   // FIXME Should we lookup PIT for other Interests that also match the data?
@@ -316,11 +329,39 @@ Forwarder::onIncomingData(const FaceEndpoint& ingress, const Data& data)
   }
 
   // CS insert
-  //  cache admission decision
   auto hopCount = data.getTag<lp::HopCountTag>();
   auto maxHopCount = data.getTag<lp::MaxHopCountTag>();
-  if(hopCount != nullptr && (*hopCount == 1|| (maxHopCount != nullptr && *hopCount == (*maxHopCount) - 1 )))
-    { m_cs.insert(data); }
+
+  //  cache admission decision custom
+  if(hopCount != nullptr && maxHopCount != nullptr) {
+    if( (*hopCount == 1 && *maxHopCount != 1) || (*hopCount == (*maxHopCount) - 1 ) )  {
+      m_cs.insert(data);
+    }
+  }
+    
+
+  // LCD
+  // if(hopCount != nullptr && maxHopCount != nullptr) {
+  //   if( (*hopCount == 1 && *maxHopCount != 1)  )  {
+  //     m_cs.insert(data);
+  //   }
+  // }
+
+  // EDGE
+  // if(hopCount != nullptr && maxHopCount != nullptr) {
+  //   if( (*hopCount == (*maxHopCount) - 1 ) )  {
+  //     m_cs.insert(data);
+  //   }
+  // }
+
+  
+  // LCE
+  // if(hopCount != nullptr && maxHopCount != nullptr) {
+  //   if( (*hopCount != 0 && *hopCount != *maxHopCount )   )  {
+  //     m_cs.insert(data);
+  //   }
+  // }
+
     
   // when only one PIT entry is matched, trigger strategy: after receive Data
   if (pitMatches.size() == 1) {

@@ -1,0 +1,43 @@
+Waf: Entering directory `/home/harry/My_data/Study/7th_sem/BTP/ndnSIM/ns-3/build'
+[2288/3110] Compiling src/ndnSIM/NFD/daemon/fw/forwarder.cpp
+[2709/3110] Compiling src/ndnSIM/examples/ndn-topo-custom.cpp
+[2711/3110] Compiling src/ndnSIM/examples/ndn-tree-cs-tracers.cpp
+[3041/3110] Linking build/lib/libns3-dev-ndnSIM-debug.so
+[3042/3110] Linking build/src/ndnSIM/examples/ns3-dev-lfid-debug
+[3043/3110] Linking build/src/ndnSIM/examples/ns3-dev-ndn-congestion-alt-topo-plugin-debug
+[3044/3110] Linking build/src/ndnSIM/examples/ns3-dev-ndn-congestion-topo-plugin-debug
+[3045/3110] Linking build/src/ndnSIM/examples/ns3-dev-ndn-csma-debug
+[3046/3110] Linking build/src/ndnSIM/examples/ns3-dev-ndn-custom-apps-debug
+[3047/3110] Linking build/src/ndnSIM/examples/ns3-dev-ndn-cxx-simple-debug
+[3048/3110] Linking build/src/ndnSIM/examples/ns3-dev-ndn-different-strategy-per-prefix-debug
+[3049/3110] Linking build/src/ndnSIM/examples/ns3-dev-ndn-grid-multiple-strategies-debug
+[3050/3110] Linking build/src/ndnSIM/examples/ns3-dev-ndn-grid-topo-plugin-loss-debug
+[3051/3110] Linking build/src/ndnSIM/examples/ns3-dev-ndn-grid-topo-plugin-red-queues-debug
+[3052/3110] Linking build/src/ndnSIM/examples/ns3-dev-ndn-grid-topo-plugin-debug
+[3053/3110] Linking build/src/ndnSIM/examples/ns3-dev-ndn-grid-debug
+[3054/3110] Linking build/src/ndnSIM/examples/ns3-dev-ndn-load-balancer-debug
+[3055/3110] Linking build/src/ndnSIM/examples/ns3-dev-ndn-simple-for-nrt-helper-debug
+[3056/3110] Linking build/src/ndnSIM/examples/ns3-dev-ndn-simple-wifi-debug
+[3057/3110] Linking build/src/ndnSIM/examples/ns3-dev-ndn-simple-with-content-freshness-debug
+[3058/3110] Linking build/src/ndnSIM/examples/ns3-dev-ndn-simple-with-link-failure-debug
+[3059/3110] Linking build/src/ndnSIM/examples/ns3-dev-ndn-simple-with-pcap-debug
+[3060/3110] Linking build/src/ndnSIM/examples/ns3-dev-ndn-simple-debug
+[3061/3110] Linking build/src/ndnSIM/examples/ns3-dev-ndn-topo-custom-debug
+[3062/3110] Linking build/src/ndnSIM/examples/ns3-dev-ndn-tree-app-delay-tracer-debug
+[3063/3110] Linking build/src/ndnSIM/examples/ns3-dev-ndn-tree-cs-tracers-debug
+[3064/3110] Linking build/src/ndnSIM/examples/ns3-dev-ndn-tree-tracers-debug
+[3065/3110] Linking build/src/ndnSIM/examples/ns3-dev-ndn-tree-with-l2tracer-debug
+[3066/3110] Linking build/src/ndnSIM/examples/ns3-dev-ndn-triangle-calculate-routes-debug
+[3067/3110] Linking build/src/ndnSIM/examples/ns3-dev-ndn-zipf-mandelbrot-debug
+[3068/3110] Linking build/utils/ns3-dev-test-runner-debug
+[3069/3110] Linking build/utils/ns3-dev-print-introspected-doxygen-debug
+Waf: Leaving directory `/home/harry/My_data/Study/7th_sem/BTP/ndnSIM/ns-3/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (34.010s)
+leaf-1 0 208
+leaf-2 0 208
+leaf-3 0 208
+leaf-4 0 208
+rtr-1 389 19
+rtr-2 390 19
+root 0 29

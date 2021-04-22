@@ -1,0 +1,11 @@
+Waf: Entering directory `/home/harry/My_data/Study/7th_sem/BTP/ndnSIM/ns-3/build'
+Waf: Leaving directory `/home/harry/My_data/Study/7th_sem/BTP/ndnSIM/ns-3/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (1.494s)
+leaf-1 0 208
+leaf-2 0 208
+leaf-3 0 208
+leaf-4 0 208
+rtr-1 369 39
+rtr-2 370 39
+root 0 69

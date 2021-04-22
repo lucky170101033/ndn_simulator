@@ -57,6 +57,8 @@ public:
   VIRTUAL_WITH_TESTS
   ~Forwarder();
 
+  std::tuple <long long ,long long > getCacheStats();
+
   const ForwarderCounters&
   getCounters() const
   {
@@ -293,6 +295,7 @@ private:
   NetworkRegionTable m_networkRegionTable;
   shared_ptr<Face>   m_csFace;
 
+  long long total_cache_hit, total_cache_miss;
   // allow Strategy (base class) to enter pipelines
   friend class fw::Strategy;
 };
